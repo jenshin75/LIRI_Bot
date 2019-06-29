@@ -15,7 +15,7 @@
 var axios = require("axios");
 
 // Grab the movieName which will always be the third node argument.
-var movieName = process.argv[2];
+var movieName = process.argv[3];
 
 // Then run a request with axios to the OMDB API with the movie specified
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
@@ -25,7 +25,14 @@ console.log(queryUrl);
 
 axios.get(queryUrl).then(
   function(response) {
+    console.log("Movie Title: " + response.data.Title);
     console.log("Release Year: " + response.data.Year);
+    console.log("IMDB Rating: " + response.data.imdbRating);
+    console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+    console.log("Country Produced: " + response.data.Country);
+    console.log("Language: " + response.data.Language);
+    console.log("Plot: " + response.data.Plot);
+    console.log("Actors: " + response.data.Actors);
   })
   .catch(function(error) {
     if (error.response) {
