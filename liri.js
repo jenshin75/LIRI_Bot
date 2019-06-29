@@ -5,27 +5,26 @@ var keys = require("./keys");
 var axios = require("axios");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
+var bandsintown = require('bandsintown');
 
 // Grab the movieName which will always be the third node argument.
 var action = process.argv[2];
 
 switch (action) {
   case "movie-this":
-    responseMovie();
+    movie();
   break;
-
   case "concert-this":
-    responseConcert();
+    artist();
   break;
-
   case "spotify-this-song":
-    responseMusic();
+    music();
   break;
   default:
-    console.log("No value found.")
+    console.log("No such value found.")
 }
 
-function responseMovie() {
+function movie() {
   var movieName = process.argv.slice(3).join(" ");
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
@@ -67,7 +66,7 @@ function responseMovie() {
 }
 
 // console.log(keys.spotify);
-function responseMusic() {
+function music() {
   var musicName = process.argv.slice(3).join(" ");
 
   // spotify.search({type: 'track', query: 'All the Small Things' }, function(err, data) {
@@ -82,3 +81,19 @@ function responseMusic() {
     console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
   });
 }
+
+
+//============================
+
+ function artist() {
+  var band = process.argv.slice(3).join(" ");
+  // Then run a request with axios to the OMDB API with the movie specified
+  var queryUrl = "https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp";
+
+  // This line is just to help us debug against the actual URL.
+  console.log(queryUrl);
+
+  axios.get(queryUrl).then(
+   function(response) {
+      console.log(response)
+  })}
