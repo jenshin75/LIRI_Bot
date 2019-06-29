@@ -8,24 +8,25 @@ var spotify = new Spotify(keys.spotify);
 
 // Grab the movieName which will always be the third node argument.
 var action = process.argv[2];
-//***var value = process.argv[3];
 
 switch (action) {
   case "movie-this":
     responseMovie();
-    break;
+  break;
+
   case "concert-this":
     responseConcert();
-    break;
+  break;
+
   case "spotify-this-song":
     responseMusic();
-    break;
-  default: 
-    console.log("liri doesn't know...")
+  break;
+  default:
+    console.log("No value found.")
 }
 
 function responseMovie() {
-  var movieName = process.argv[3];
+  var movieName = process.argv.slice(3).join(" ");
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
@@ -67,19 +68,17 @@ function responseMovie() {
 
 // console.log(keys.spotify);
 function responseMusic() {
-  var musicName = process.argv[3];
+  var musicName = process.argv.slice(3).join(" ");
 
   // spotify.search({type: 'track', query: 'All the Small Things' }, function(err, data) {
-  spotify.search({type: 'track', query: musicName}, function(err, data) {  
-     if (err) {
+  spotify.search({ type: 'track', query: musicName }, function (err, data) {
+    if (err) {
       return console.log('Error occurred: ' + err);
     }
-// console.log(data.tracks.items[0]); 
-
-console.log(data.tracks.items[0].artists[0].name); //Artist(s)
-console.log(data.tracks.items[0].name); //The song's name
-console.log(data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
-console.log(data.tracks.items[0].album.name); //The album that the song is from
-
- });
+    // console.log(data.tracks.items[0]); 
+    console.log("Artist(s): " + data.tracks.items[0].artists[0].name); //Artist(s)
+    console.log("Song Name: " + data.tracks.items[0].name); //The song's name
+    console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
+    console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
+  });
 }
