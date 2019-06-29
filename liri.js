@@ -1,22 +1,45 @@
-//require("dotenv").config();
-
-//see calculator activity
-
-// INSTRUCTIONS:
-// ---------------------------------------------------------------------------------------------------------
-// Level 1:
-// Take any movie with a word title (ex: Cinderella) as a Node argument and retrieve the year it was created
-
-// Level 2 (More Challenging):
-// Take a move with multiple words (ex: Forrest Gump) as a Node argument and retrieve the year it was created.
-// ---------------------------------------------------------------------------------------------------------
+require("dotenv").config();
+var keys = require("./keys");
 
 // Include the axios npm package (Don't forget to run "npm install axios" in this folder first!)
 var axios = require("axios");
 
-// Grab the movieName which will always be the third node argument.
-var movieName = process.argv[3];
+var spotify = require("node-spotify-api")
+var spotify = new Spotify(keys.spotify) 
 
+//======
+// function responseMusic() {
+//   var musicName = process.argv[3];
+// //   spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+// //     if (err) {
+// //       return console.log('Error occurred: ' + err);
+// //     }
+   
+// //   console.log(data); 
+// //   });
+// // }
+//=====
+
+// Grab the movieName which will always be the third node argument.
+var action = process.argv[2];
+var value = process.argv[3];
+
+switch (action) {
+case "movie-this":
+  responseMovie();
+break;
+
+case "concert-this":
+  responseConcert();
+break;
+
+case "spotify-this-song":
+  responseMusic();
+break;
+}
+
+function responseMovie() {
+var movieName = process.argv[3];
 // Then run a request with axios to the OMDB API with the movie specified
 var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
@@ -54,3 +77,4 @@ axios.get(queryUrl).then(
     }
     console.log(error.config);
   });
+}
