@@ -77,9 +77,9 @@ function responseMusic() {
 // console.log(data.tracks.items[0]); 
 
 console.log(data.tracks.items[0].artists[0].name); //Artist(s)
-//console.log(data.tracks.items[0]); //The song's name
-//console.log(data.tracks.items[0]); //A preview link of the song from Spotify
-//console.log(data.tracks.items[0]); //The album that the song is from
+console.log(data.tracks.items[0].name); //The song's name
+console.log(data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
+console.log(data.tracks.items[0].album.name); //The album that the song is from
 
  });
 }
