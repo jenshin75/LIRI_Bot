@@ -69,10 +69,17 @@ function responseMovie() {
 function responseMusic() {
   var musicName = process.argv[3];
 
-  spotify.search({type: 'track', query: 'All the Small Things' }, function(err, data) {
-    if (err) {
+  // spotify.search({type: 'track', query: 'All the Small Things' }, function(err, data) {
+  spotify.search({type: 'track', query: musicName}, function(err, data) {  
+     if (err) {
       return console.log('Error occurred: ' + err);
     }
- console.log(data.tracks.items[0]); 
+// console.log(data.tracks.items[0]); 
+
+console.log(data.tracks.items[0].artists[0].name); //Artist(s)
+//console.log(data.tracks.items[0]); //The song's name
+//console.log(data.tracks.items[0]); //A preview link of the song from Spotify
+//console.log(data.tracks.items[0]); //The album that the song is from
+
  });
 }
