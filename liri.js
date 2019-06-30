@@ -8,6 +8,7 @@ var spotify = new Spotify(keys.spotify);
 var bandsintown = require('bandsintown');
 var moment = require('moment');
 
+
 // Grab the movieName which will always be the third node argument.
 var action = process.argv[2];
 
@@ -17,6 +18,9 @@ switch (action) {
     break;
   case "concert-this":
     artist();
+    break;
+  case "do-what-it-says":
+    order();
     break;
   case "spotify-this-song":
     music();
@@ -90,15 +94,15 @@ function artist() {
 
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp";
- 
-  // This line is just to help us debug against the actual URL.
-  console.log(queryUrl);
 
- axios.get(queryUrl).then(
+  // This line is just to help us debug against the actual URL.
+  // console.log(queryUrl);
+
+  axios.get(queryUrl).then(
     function (response) {
       console.log("Venue Name: " + response.data[0].venue.name);
       console.log("Venue Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
-      console.log("Venue Date: " + response.data[0].datetime);     
+      console.log("Venue Date: " + response.data[0].datetime);
       var dateRev = moment(response.data[0].datetime).format('L');
       console.log("Venue Date (MM/DD/YYYY): " + dateRev);
     })
@@ -122,4 +126,31 @@ function artist() {
       }
       console.log(error.config);
     });
+}
+
+//==========
+//==========
+function order() {
+// Includes the FS package for reading and writing packages
+var fs = require("fs");
+
+// Running the readFile module that's inside of fs.
+// Stores the read information into the variable "data"
+fs.readFile("random.txt", "utf8", function(err, data) {
+  if (err) {
+    return console.log(err);
+  }
+
+  // Break the string down by comma separation and store the contents into the output array.
+  var output = data.split(",");
+
+  // Loop Through the newly created output array
+  for (var i = 0; i < output.length; i++) {
+
+    // Print each element (item) of the array/
+    console.log(output[i]);
+  }
+});
+
+
 }
