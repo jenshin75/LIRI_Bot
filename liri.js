@@ -8,7 +8,6 @@ var spotify = new Spotify(keys.spotify);
 var bandsintown = require('bandsintown');
 var moment = require('moment');
 
-
 // Grab the movieName which will always be the third node argument.
 var action = process.argv[2];
 
@@ -74,9 +73,15 @@ function movie() {
 // console.log(keys.spotify);
 function music() {
   var musicName = process.argv.slice(3).join(" ");
-
-  // spotify.search({type: 'track', query: 'All the Small Things' }, function(err, data) {
-  spotify.search({ type: 'track', query: musicName }, function (err, data) {
+  if (process.argv[3] === undefined){
+    spotify.search({type: 'track', query: 'The Sign Ace of Base' }, function(err, data) {
+    console.log("Artist(s): " + data.tracks.items[0].artists[0].name); //Artist(s)
+    console.log("Song Name: " + data.tracks.items[0].name); //The song's name
+    console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
+    console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
+     })}
+  else
+    spotify.search({ type: 'track', query: musicName }, function (err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
     }
@@ -86,7 +91,6 @@ function music() {
     console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
     console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
   });
-}
 
 
 function artist() {
@@ -147,10 +151,9 @@ fs.readFile("random.txt", "utf8", function(err, data) {
   // Loop Through the newly created output array
   for (var i = 0; i < output.length; i++) {
 
-    // Print each element (item) of the array/
-    console.log(output[i]);
+  // Print each element (item) of the array/
+  console.log(output[i]);
   }
 });
-
-
+}
 }
