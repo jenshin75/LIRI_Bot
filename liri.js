@@ -27,11 +27,12 @@ switch (action) {
 
 function movie() {
   var movieName = process.argv.slice(3).join(" ");
+
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
   // This line is just to help us debug against the actual URL.
-  console.log(queryUrl);
+  // console.log(queryUrl);
 
   axios.get(queryUrl).then(
     function (response) {
@@ -85,12 +86,11 @@ function music() {
 
 
 function artist() {
-  var band = process.argv.slice(3).join(" ");
+  var band = process.argv.slice(3).join("");
 
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp";
-  var dateRev = moment(response.data[0].datetime).format('L');    // 06/29/2019
-
+ 
   // This line is just to help us debug against the actual URL.
   console.log(queryUrl);
 
@@ -98,7 +98,28 @@ function artist() {
     function (response) {
       console.log("Venue Name: " + response.data[0].venue.name);
       console.log("Venue Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
-      // console.log("Venue Date: " + response.data[0].datetime);      
-      console.log("Venue Date: " + dateRev);
+      console.log("Venue Date: " + response.data[0].datetime);     
+      var dateRev = moment(response.data[0].datetime).format('L');
+      console.log("Venue Date (MM/DD/YYYY): " + dateRev);
     })
+    .catch(function (error) {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log("---------------Data---------------");
+        console.log(error.response.data);
+        console.log("---------------Status---------------");
+        console.log(error.response.status);
+        console.log("---------------Status---------------");
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an object that comes back with details pertaining to the error that occurred.
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log("Error", error.message);
+      }
+      console.log(error.config);
+    });
 }
