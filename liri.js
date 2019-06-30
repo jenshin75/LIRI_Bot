@@ -6,6 +6,7 @@ var axios = require("axios");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
 var bandsintown = require('bandsintown');
+var moment = require('moment');
 
 // Grab the movieName which will always be the third node argument.
 var action = process.argv[2];
@@ -13,13 +14,13 @@ var action = process.argv[2];
 switch (action) {
   case "movie-this":
     movie();
-  break;
+    break;
   case "concert-this":
     artist();
-  break;
+    break;
   case "spotify-this-song":
     music();
-  break;
+    break;
   default:
     console.log("No such value found.")
 }
@@ -83,17 +84,21 @@ function music() {
 }
 
 
-//============================
-
- function artist() {
+function artist() {
   var band = process.argv.slice(3).join(" ");
+
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp";
+  var dateRev = moment(response.data[0].datetime).format('L');    // 06/29/2019
 
   // This line is just to help us debug against the actual URL.
   console.log(queryUrl);
 
-  axios.get(queryUrl).then(
-   function(response) {
-      console.log(response)
-  })}
+ axios.get(queryUrl).then(
+    function (response) {
+      console.log("Venue Name: " + response.data[0].venue.name);
+      console.log("Venue Location: " + response.data[0].venue.city + ", " + response.data[0].venue.country);
+      // console.log("Venue Date: " + response.data[0].datetime);      
+      console.log("Venue Date: " + dateRev);
+    })
+}
