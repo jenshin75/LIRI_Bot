@@ -29,6 +29,12 @@ switch (action) {
     console.log("No such value found.")
 }
 
+
+
+
+
+
+
 function artist() {                       
   var band = process.argv.slice(3).join(" ");
 
@@ -67,6 +73,8 @@ function artist() {
       console.log(error.config);
     });
 }
+
+
 
 
 
