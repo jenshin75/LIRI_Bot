@@ -36,9 +36,19 @@ function movie() {
 
   // This line is just to help us debug against the actual URL.
   // console.log(queryUrl);
-
+ 
   axios.get(queryUrl).then(
     function (response) {
+//?????????????????????????
+
+      // if (process.argv[3] === undefined){
+      //   console.log("If you haven't watched 'Mr. Nobody', then you should. http://www.imdb.com/title/tt0485947/ It is on Netflix too!")
+  //  process.argv[3] === "Mr. Nobody";
+  //  console.log("Plot: " + response.data.Plot);
+      // }
+
+//?????????????????????????
+// else
       console.log("Movie Title: " + response.data.Title);
       console.log("Release Year: " + response.data.Year);
       console.log("IMDB Rating: " + response.data.imdbRating);
@@ -67,8 +77,9 @@ function movie() {
         console.log("Error", error.message);
       }
       console.log(error.config);
+      
     });
-}
+  }
 
 // console.log(keys.spotify);
 function music() {
@@ -81,6 +92,7 @@ function music() {
     console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
      })}
   else
+
     spotify.search({ type: 'track', query: musicName }, function (err, data) {
     if (err) {
       return console.log('Error occurred: ' + err);
@@ -91,7 +103,6 @@ function music() {
     console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
     console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
   });
-
 
 function artist() {
   var band = process.argv.slice(3).join("");
