@@ -94,19 +94,28 @@ function task() {
     for (var i = 0; i < output.length; i++) {
       // Print each element (item) of the array
       // console.log(output[i]);
-  }
+
   var item1 = (output[0]);
   var item2 = (output[1]);
-  console.log("node liri.js " + item1 + " " + item2);
+}
+  // console.log("node liri.js " + item1 + " " + item2);
 
-
+if (item1 === "spotify-this-song") {
+  console.log("spotify-this-song: " + item2);  
+  music();
+}
+// else if (item1 === "concert-this"){
+//   console.log("concert-this: " + item2);
+//   artist();
+// }
+// else if (item1 === "movie-this"){
+//   console.log("movie-this: " + item2);
+//   movie();
+// }
+// else task();
 }
 );
 }
-
-
-
-
 
 
 
