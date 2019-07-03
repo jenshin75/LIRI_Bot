@@ -103,8 +103,24 @@ function task() {
 
 if (item1 === "spotify-this-song") {
   console.log("spotify-this-song: " + item2);  
-  music(item2);
+  //*************************************** */
+  // music(item2);
+  spotify.search({ type: 'track', query: item2 }, function (err, data) {
+    if (err) {
+      return console.log('Error occurred: ' + err);
+    }
+    // console.log(data.tracks.items[0]); 
+    console.log("Artist(s): " + data.tracks.items[0].artists[0].name); //Artist(s)
+    console.log("Song Name: " + data.tracks.items[0].name); //The song's name
+    console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
+    console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
+  });
+
+
 }
+
+  //*************************************** */
+  
 // else if (item1 === "concert-this"){
 //   console.log("concert-this: " + item2);
 //   artist();
