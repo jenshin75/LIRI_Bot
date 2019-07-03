@@ -1,7 +1,7 @@
 [Google](http://www.google.com/)
 
 blah blah blah....
-![Test Image - JPG](/images/test.jpg)
+<!-- ![Test Image - JPG](/images/test.jpg) -->
 
 blah blah blah....
-![Test Image - PNG](/images/test.png)
+<!-- ![Test Image - PNG](/images/test.png) -->
