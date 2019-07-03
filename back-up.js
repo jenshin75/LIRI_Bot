@@ -11,19 +11,20 @@ var moment = require('moment');
 
 // Grab the movieName which will always be the third node argument.
 var action = process.argv[2];
+var allName = process.argv.slice(3).join(" ");
 
 switch (action) {
   case "movie-this":
-    movie();
+    movie(allName);
     break;
   case "concert-this":
-    artist();
+    artist(allName);
     break;
   case "do-what-it-says":
     task();
     break;
   case "spotify-this-song":
-    music();
+    music(allName);
     break;
   default:
     console.log("No such value found.")
@@ -33,8 +34,8 @@ switch (action) {
 
 
 
-function artist() {                       
-  var band = process.argv.slice(3).join(" ");
+function artist(band) {                       
+  // var band = process.argv.slice(3).join(" ");
 
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "https://rest.bandsintown.com/artists/" + band + "/events?app_id=codingbootcamp";
@@ -102,8 +103,26 @@ function task() {
 
 if (item1 === "spotify-this-song") {
   console.log("spotify-this-song: " + item2);  
-  music();
+  console.log(item2);
+  
+  //*************************************** */
+  music(item2);
+  // spotify.search({ type: 'track', query: item2 }, function (err, data) {
+  //   if (err) {
+  //     return console.log('Error occurred: ' + err);
+  //   }
+  //   // console.log(data.tracks.items[0]); 
+  //   console.log("Artist(s): " + data.tracks.items[0].artists[0].name); //Artist(s)
+  //   console.log("Song Name: " + data.tracks.items[0].name); //The song's name
+  //   console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
+  //   console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
+  // });
+
+
 }
+
+  //*************************************** */
+  
 // else if (item1 === "concert-this"){
 //   console.log("concert-this: " + item2);
 //   artist();
@@ -123,8 +142,8 @@ if (item1 === "spotify-this-song") {
 
 
 //=====OMDB MOVIE SEARCH
-function movie() {
-  var movieName = process.argv.slice(3).join(" ");
+function movie(movieName) {
+  // var movieName = process.argv.slice(3).join(" ");
 
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
@@ -179,16 +198,16 @@ function movie() {
 
 //=====SPOTIFY MUSIC SEARCH 
 // console.log(keys.spotify);
-function music() {
-  var musicName = process.argv.slice(3).join(" ");
-  if (process.argv[3] === undefined) {
+function music(musicName) {
+  
+  // var musicName = process.argv.slice(3).join(" ");
+  if (musicName === undefined) {
     spotify.search({ type: 'track', query: 'The Sign Ace of Base' }, function (err, data) {
       console.log("Artist(s): " + data.tracks.items[0].artists[0].name); //Artist(s)
       console.log("Song Name: " + data.tracks.items[0].name); //The song's name
       console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
       console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
-    }
-    )
+    })
   }
   else
     spotify.search({ type: 'track', query: musicName }, function (err, data) {
@@ -202,5 +221,6 @@ function music() {
       console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
     });
   
-}
+    
 
+}
