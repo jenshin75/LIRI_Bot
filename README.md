@@ -25,9 +25,9 @@ Running the app:
 Use the following command to start the app:  node liri.js
 
 Screen prints:
-![Concert This](./images/concert-this.JPG)
-![Do What It Says](./images/do-what-it-says.JPG)
-![Movie This 1 - Movie Entered](./images/movie-this-with-movie.JPG)
-![Moive This 2 - No Movie Entered](./images/movie-this-with-no-movie.JPG)
-![Spotify This Song - Song Entered](./images/spotify-this-song-with-song.JPG)
+![Concert This](./images/concert-this.PNG)
+![Do What It Says](./images/do-what-it-says.PNG)
+![Movie This 1 - Movie Entered](./images/movie-this-with-movie.PNG)
+![Moive This 2 - No Movie Entered](./images/movie-this-with-no-movie.PNG)
+![Spotify This Song - Song Entered](./images/spotify-this-song-with-song.PNG)
 
