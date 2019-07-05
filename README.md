@@ -1,7 +1,33 @@
-[Google](http://www.google.com/)
-
-blah blah blah....
+<!-- [Google](http://www.google.com/)
 ![Test Image - JPG](./images/test.JPG)
+![Test Image - PNG](./images/test.PNG) -->
 
-blah blah blah....
-![Test Image - PNG](./images/test.PNG)
+Overview:
+This is an app that allows users to search for movies, concerts, and/or music by selecting commands from a list and then typing in a search term. This program runs only in the CLI (like Bash).
+
+The app is broken down by individual function by specific command entered: movie-this, spotify-this-song, concert-this and do-what-it-says.  
+
+The following must be installed on your machine:
+•Git Bash
+•NodeJS
+•NPM
+•MomentJS
+•Node-Spotify-API
+•Axios
+•OMDB API
+•Bands In Town API
+
+Installing dependencies:
+Use NPM to install all required dependencies:
+npm install
+
+Running the app: 
+Use the following command to start the app:  node liri.js
+
+Screen prints:
+![Concert This](./images/concert-this.JPG)
+![Do What It Says](./images/do-what-it-says.JPG)
+![Movie This 1 - Movie Entered](./images/movie-this-with-movie.JPG)
+![Moive This 2 - No Movie Entered](./images/movie-this-with-no-movie.JPG)
+![Spotify This Song - Song Entered](./images/spotify-this-song-with-song.JPG)
+
