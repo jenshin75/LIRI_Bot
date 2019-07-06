@@ -38,10 +38,8 @@ Movie This - Movie Entered:
 Movie This - No Movie Entered: 
 ![Movie This - No Movie Entered](./images/movie-this-with-no-movie.PNG)
 
-Spotify This Song - Song Entered:
- ![Spotify This Song - Song Entered](./images/spotify-this-song-with-song.PNG)
-
 Spotify This Song - No Song Entered:
 ![Spotify This Song - No Song Entered](./images/spotify-this-song-no-song.PNG)
 
-Thanks.
+Spotify This Song - Song Entered:
+ ![Spotify This Song - Song Entered](./images/spotify-this-song-with-song.PNG)
