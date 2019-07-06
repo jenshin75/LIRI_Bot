@@ -42,4 +42,6 @@ Spotify This Song - Song Entered:
  ![Spotify This Song - Song Entered](./images/spotify-this-song-with-song.PNG)
 
 Spotify This Song - No Song Entered:
-![Spotify This Song - NO Song Entered](./images/spotify-this-song-no-song.PNG)
+![Spotify This Song - No Song Entered](./images/spotify-this-song-no-song.PNG)
+
+Thanks.
