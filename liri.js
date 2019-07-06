@@ -118,6 +118,10 @@ if (item1 === "spotify-this-song") {
 function movie(movieName) {
   // var movieName = process.argv.slice(3).join(" ");
 
+if (!movieName){
+  movieName = "Mr. Nobody"
+}
+
   // Then run a request with axios to the OMDB API with the movie specified
   var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
@@ -156,11 +160,11 @@ function movie(movieName) {
       console.log(error.config);
     });
 
-    if(process.argv[3] === undefined){
-        //   // console.log("http://www.omdbapi.com/?t=mrnobody&y=&plot=short&apikey=trilogy");
-        console.log("If you haven't watched 'Mr. Nobody,' then you should. http://www.imdb.com/title/tt0485947/");
-        console.log("It's on Netflix!");
-    }
+    // if(process.argv[3] === undefined){
+    //     //   // console.log("http://www.omdbapi.com/?t=mrnobody&y=&plot=short&apikey=trilogy");
+    //     console.log("If you haven't watched 'Mr. Nobody,' then you should. http://www.imdb.com/title/tt0485947/");
+    //     console.log("It's on Netflix!");
+    // }
   }
 
 
@@ -169,19 +173,19 @@ function movie(movieName) {
 
 
 // console.log(keys.spotify);
-function music(musicName) {
-  
-  // var musicName = process.argv.slice(3).join(" ");
-  if (musicName === undefined) {
-    spotify.search({ type: 'track', query: 'The Sign Ace of Base' }, function (err, data) {
-      console.log("Artist(s): " + data.tracks.items[0].artists[0].name); //Artist(s)
-      console.log("Song Name: " + data.tracks.items[0].name); //The song's name
-      console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
-      console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
-    })
+// function music(musicName="The Sign Ace of Base") {
+function music(musicName) { 
+  // var musicName = ?process.argv.slice(3).join(" ");
+  if (!musicName) {
+    // spotify.search({ type: 'track', query: 'The Sign Ace of Base' }, function (err, data) {
+    //   console.log("Artist(s): " + data.tracks.items[0].artists[0].name); //Artist(s)
+    //   console.log("Song Name: " + data.tracks.items[0].name); //The song's name
+    //   console.log("Preview Link: " + data.tracks.items[0].album.external_urls.spotify); //A preview link of the song from Spotify
+    //   console.log("Album: " + data.tracks.items[0].album.name); //The album that the song is from
+    // })
+    musicName = "Ace of Base";
   }
-  else
-    spotify.search({ type: 'track', query: musicName }, function (err, data) {
+  spotify.search({ type: 'track', query: musicName }, function (err, data) {
       if (err) {
         return console.log('Error occurred: ' + err);
       }
