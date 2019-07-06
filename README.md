@@ -30,5 +30,5 @@ Screen prints:
 ![Movie This - Movie Entered](./images/movie-this-with-movie.PNG)
 ![Movie This  No Movie Entered](./images/movie-this-with-no-movie.PNG)
 ![Spotify This Song - Song Entered](./images/spotify-this-song-with-song.PNG)
-![Spotify This Song - NO Song Entered](./images/movie-this-with-no-song.PNG)
+![Spotify This Song - NO Song Entered](./images/spotify-this-song-no-song.PNG)
 
